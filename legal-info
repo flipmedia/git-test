@@ -1,0 +1,1541 @@
+<div class="page-wrapper">
+  <div class="page-body wraper">
+    <div class="wraper mrg15">
+      <div class="panel panel-primary usersDash">
+        <div class="panel-heading font_lg">
+          <ul class="nav panel-tabs">
+            <li (click)="changeComponent(legal, 1)" class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': '1' == activeTab }">{{ 'CRDeath.LegalInfo' | translate }}</a>
+            </li>
+            <li class="nav-item" (click)="changeComponent(legal-more, 2)">
+              <a class="nav-link" [ngClass]="{'active': '2' == activeTab }">{{ 'CRDeath.LegalInfoMore' | translate }}</a>
+            </li>
+            <li class="nav-item" (click)="changeComponent(statistical, 3)">
+              <a class="nav-link" [ngClass]="{'active': '3' == activeTab }">{{ 'CRDeath.StatisticalInfo' | translate }}</a>
+            </li>
+            <li class="nav-item" (click)="changeComponent(statistical-more, 4)">
+              <a class="nav-link" [ngClass]="{'active': '4' == activeTab }">{{ 'CRDeath.StatisticalInfoMore' | translate }}</a>
+            </li>
+            <li class="nav-item" (click)="changeComponent(info-in-english, 5)">
+              <a class="nav-link" [ngClass]="{'active': '5' == activeTab }">{{ 'CRDeath.InfoInEnglish' | translate }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="panel-body bgWh">
+          <div class="tab-content" *ngIf="activeTab == '1'">
+            <div class="container">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="birth-dob" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfTheDiseased' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+                        <select class="form-control mr-sm-2" id="salutation" name="salutation">
+                          <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                          <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                        </select>
+                        <input type="text" required maxlength="35" id="birth-nameofchild" class="form-control" placeholder="{{ 'CRDeath.NameOfTheDiseased' | translate }}"
+                          name="nameOfDeceased" [(ngModel)]="nameOfDeceased" #pickedName="ngModel">
+                      </div>
+                      <!--<div *ngIf="!pickedName.valid && pickedName.touched">
+                            Name is required!
+                          </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <fieldset class="form-group">
+                      <div class="row">
+                        <legend class="col-form-label col-sm-4 pt-0">{{ 'CRDeath.DateOfDeath' | translate}}</legend>
+                        <div class="col-sm-8">
+                          <input id="death-date" class="form-control" (click)="d.toggle()" placeholder="yyyy-mm-dd" name="death-date" [(ngModel)]="model"
+                            ngbDatepicker #d="ngbDatepicker">
+                          <div class="form-control">
+                            <label for="appt-time">{{ 'CRDeath.Time' | translate}}</label>
+                            <input type="time" id="appt-time" name="appt-time" required />
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="address-type" class="col-sm-4 col-form-label">{{ 'CRDeath.AddressTypeOfDeceased' | translate}}</label>
+                      <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">{{ 'CRDeath.Local' | translate}}</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.Kerala' | translate}}</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.India' | translate}}</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.OutsideIndia' | translate}}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="col-md-6">
+                        <div class="form-group row">
+                          <label for="birth-nameofchild" class="col-sm-4 col-form-label">{{ 'CRDeath.PermanentAddressOfTheDiseased' | translate}}</label>
+                          <div class="col-sm-8">
+                          <textarea class="form-control" placeholder="{{ 'CRDeath.PermanentAddressOfTheDiseased' | translate}}"  id="perm-Address" rows="3" class="form-control"></textarea>
+                          </div>
+                        </div>
+                      </div>-->
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="birth-nameofchild" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfFatherOrHusband' | translate}}</label>
+                      <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="fatherOrHusband" id="fatherOrHusband1" value="option1">
+                          <label class="form-check-label" for="fatherOrHusband1">{{ 'CRDeath.Father' | translate}}</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="fatherOrHusband" id="fatherOrHusband2" value="option2" checked>
+                            <label class="form-check-label" for="fatherOrHusband2">{{ 'CRDeath.Husband' | translate}}</label>
+                          </div>
+                        </div>
+                        <input type="text" required maxlength="35" id="name-fatherorhusband" class="form-control" placeholder="Name of Father/Husband"
+                          name="nameOfFatherOrHusband" [(ngModel)]="nameOfFatherOrHusband" #pickedNameOfFatherOrHusband="ngModel">
+                      </div>
+                      <!--<div *ngIf="!pickedNameOfFatherOrHusband.valid && pickedNameOfFatherOrHusband.touched">
+                            Name of Father/Husband is required!
+                          </div>-->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="birth-nameofchild" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfMother' | translate}}</label>
+                      <div class="col-sm-8">
+                        <input type="text" required maxlength="35" id="name-mother" class="form-control" placeholder="Name of Mother" name="nameOfMother"
+                          [(ngModel)]="nameOfMother" #pickedNameOfMother="ngModel">
+                      </div>
+                      <!--<div *ngIf="!pickedNameOfMother.valid && pickedNameOfMother.touched">
+                            Name of Mother is required!
+                          </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="birth-nameofchild" class="col-sm-4 col-form-label">{{ 'CRDeath.AddressOfDeceasedAtTimeOfDeath' | translate}}</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" placeholder="{{ 'CRDeath.AddressOfDeceasedAtTimeOfDeath' | translate}}" id="address-AtTimeOfDeceased"
+                          rows="3" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="sex" class="col-sm-4 col-form-label">{{ 'CRDeath.SexOfDeceased' | translate}}</label>
+                      <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">{{ 'CRBirth.Female' | translate}}</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRBirth.Male' | translate}}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="age" class="col-sm-4 col-form-label">{{ 'CRDeath.AgeOfDeceased' | translate}}</label>
+                      <div class="col-sm-8">
+                        <input type="text" required maxlength="3" id="age-deceased" class="form-control" placeholder="{{ 'CRDeath.AgeOfDeceased' | translate}}"
+                          name="ageOfDeceased" [(ngModel)]="ageOfDeceased" #pickedAgeOfDeceased="ngModel">
+                      </div>
+                      <!--<div *ngIf="!pickedAgeOfDeceased.valid && pickedAgeOfDeceased.touched">
+                            Age of deceased is required!
+                          </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="place" class="col-sm-4 col-form-label">{{ 'CRDeath.PlaceOfDeath' | translate}}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate}}</option>
+                          <option value="1">{{ 'CRDeath.HospitalOrInstitution' | translate}}</option>
+                          <option value="2">{{ 'CRDeath.House' | translate}}</option>
+                          <option value="3">{{ 'CRDeath.OtherPlace' | translate}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="address-placeofdeath" class="col-sm-4 col-form-label">{{ 'CRDeath.AddressOfPlaceOfDeath' | translate}}</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" placeholder="{{ 'CRDeath.AddressOfPlaceOfDeath' | translate}}" id="placeofdeath-Address" rows="3"
+                          class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- test1-->
+                  <div class="col-md-12 col-lg-12">
+                    <div class="form-group row">
+                      <label class="col-sm-12 col-form-label lablmain">{{ 'CRDeath.PermanentAddressOfTheDiseased' | translate }}</label>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-lg-12">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.CareOf' | translate }}</label>
+                          <div class="col-sm-8 form-inline">
+                            <select class="form-control mr-sm-2" id="salutationSelect">
+                              <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                              <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                            </select>
+                            <input type="text" maxlength="45" id="" class="form-control col-sm-8" placeholder="C/O" name="deathOther" [(ngModel)]="deathOther"
+                              #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.WardNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.WardNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseNumber' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseNumber' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.ResidenceAssocNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.ResidenceAssocNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.StreetName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.StreetName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PlaceName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.PlaceName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Via' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Via' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Village' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Village' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Taluk' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Taluk' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Country' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.India' | translate }}</option>
+                              <option>{{ 'CRDeath.OutsideIndia' | translate }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.State' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.Kerala' | translate }}</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.District' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Thiruvananthapuram</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PostOffice' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Kowdiar</option>
+                              <option>Kadavoor</option>
+                              <option>Pothanicad</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-2">
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <input id="" class="form-control" value="695003" placeholder="{{ 'AddressFields.PinCode' | translate }}" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--test1 ends-->
+                  <!-- test2 Address of place of death-->
+                  <div class="col-md-12 col-lg-12">
+                    <div class="form-group row">
+                      <label class="col-sm-12 col-form-label lablmain">{{ 'CRDeath.AddressOfPlaceOfDeath' | translate }}</label>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-lg-12">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.CareOf' | translate }}</label>
+                          <div class="col-sm-8 form-inline">
+                            <select class="form-control mr-sm-2" id="salutationSelect">
+                              <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                              <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                            </select>
+                            <input type="text" maxlength="45" id="" class="form-control col-sm-8" placeholder="C/O" name="deathOther" [(ngModel)]="deathOther"
+                              #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.WardNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.WardNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseNumber' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseNumber' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.ResidenceAssocNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.ResidenceAssocNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.StreetName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.StreetName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PlaceName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.PlaceName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Via' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Via' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Village' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Village' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Taluk' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Taluk' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Country' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.India' | translate }}</option>
+                              <option>{{ 'CRDeath.OutsideIndia' | translate }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.State' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.Kerala' | translate }}</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.District' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Thiruvananthapuram</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PostOffice' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Kowdiar</option>
+                              <option>Kadavoor</option>
+                              <option>Pothanicad</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-2">
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <input id="" class="form-control" value="695003" placeholder="{{ 'AddressFields.PinCode' | translate }}" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--test2 ends-->
+
+
+                  <div class="wraper LogBtns btn-center" align="center">
+                    <!--<button class="btn btn-primary mb-2" (click)="changeComponent(legal1, 1)">
+                          < Back</button> -->
+                    <button class="btn btn-primary mb-2 btn-save">{{ 'Settings.save' | translate }}</button>
+                    <button class="btn btn-primary mb-2" (click)="changeComponent(legal3, 2)">{{ 'CRDeath.Next' | translate }} ></button>
+                  </div>
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <div class="tab-content" *ngIf="activeTab == '2'">
+            <div class="container">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="birth-dob" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfTheHospital' | translate }}</label>
+                      <div class="col-sm-8">
+                        <input type="text" required maxlength="105" id="" class="form-control" placeholder="{{ 'CRDeath.NameOfTheHospital' | translate }}"
+                          name="nameOfHospital" [(ngModel)]="nameOfHospital" #pickedName="ngModel">
+                      </div>
+                      <!--<div *ngIf="!pickedName.valid && pickedName.touched">
+                                Name is required!
+                              </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <fieldset class="form-group">
+                      <div class="row">
+                        <legend class="col-form-label col-sm-4 pt-0">{{ 'CRDeath.SignatoryOfficerDetails' | translate }}</legend>
+                        <div class="col-sm-8">
+                          <fieldset>
+
+                            <div class="form-control">
+                              <label for="doctor">{{ 'CRDeath.OfficerName' | translate }}</label>
+                              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <option value="strangelove">Strangelove</option>
+                                <option value="moreau">Moreau</option>
+                                <option value="watson">Phibes</option>
+                              </select>
+                            </div>
+
+                            <div class="form-control">
+                              <label for="appt-time">{{ 'CRDeath.Designation' | translate }}</label>
+                              <input type="text" id="appt-time" name="appt-time" class="form-control" />
+                            </div>
+                          </fieldset>
+
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="address-type-informant" class="col-sm-4 col-form-label">{{ 'CRDeath.AddressTypeOfInformant' | translate}}</label>
+                      <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">{{ 'CRDeath.Local' | translate}}</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.Kerala' | translate}}</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.India' | translate}}</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.OutsideIndia' | translate}}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="col-md-6">
+                            <div class="form-group row">
+                              <label for="address-informant" class="col-sm-4 col-form-label">{{ 'CRBirth.InformantsNameAndAddress' | translate}}</label>
+                              <div class="col-sm-8">
+                              <textarea class="form-control" placeholder="{{ 'CRBirth.InformantsNameAndAddress' | translate}}"  id="informant-Address" rows="3" class="form-control"></textarea>
+                              </div>
+                            </div>
+                          </div> -->
+
+
+
+                  <div class="col-md-12 col-lg-12">
+                    <div class="form-group row">
+                      <label class="col-sm-12 col-form-label lablmain">{{ 'CRBirth.InformantsNameAndAddress' | translate }}</label>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-lg-12">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.InformantName' | translate }}</label>
+                          <div class="col-sm-8 form-inline">
+                            <select class="form-control mr-sm-2" id="salutationSelect">
+                              <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                              <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                            </select>
+                            <input type="text" maxlength="45" id="" class="form-control col-sm-8" placeholder="{{ 'CRDeath.InformantName' | translate }}"
+                              name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.WardNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.WardNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseNumber' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseNumber' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.ResidenceAssocNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.ResidenceAssocNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.StreetName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.StreetName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PlaceName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.PlaceName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Via' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Via' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Village' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Village' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Taluk' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Taluk' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Country' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.India' | translate }}</option>
+                              <option>{{ 'CRDeath.OutsideIndia' | translate }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.State' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.Kerala' | translate }}</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.District' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Thiruvananthapuram</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PostOffice' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Kowdiar</option>
+                              <option>Kadavoor</option>
+                              <option>Pothanicad</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-2">
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <input id="" class="form-control" value="695003" placeholder="{{ 'AddressFields.PinCode' | translate }}" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="wraper LogBtns btn-center" align="center">
+                    <button class="btn btn-primary mb-2" (click)="changeComponent(legal1, 1)">
+                      < {{ 'CRDeath.Back' | translate }}</button>
+                        <button class="btn btn-primary mb-2 btn-save">{{ 'Settings.save' | translate }}</button>
+                        <button class="btn btn-primary mb-2" (click)="changeComponent(legal3, 3)">{{ 'CRDeath.Next' | translate }} ></button>
+                  </div>
+
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="tab-content" *ngIf="activeTab == '3'">
+            <div class="container">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="address-type-informant" class="col-sm-4 col-form-label">{{ 'CRDeath.TypeOfPlaceOfDeceased' | translate }}</label>
+                      <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">{{ 'CRDeath.Local' | translate }}</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.Kerala' | translate }}</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.India' | translate }}</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.OutsideIndia' | translate }}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="place" class="col-sm-4 col-form-label">{{ 'AddressFields.State' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Andhra Pradesh</option>
+                          <option value="2">Bihar</option>
+                          <option value="3">Gujrat</option>
+                          <option value="3">Haryana</option>
+                          <option value="3">Jammu & Kashmir</option>
+                          <option value="3">Kerala</option>
+                          <option value="3">Madhya Pradesh</option>
+                          <option value="3">Rajastan</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="place" class="col-sm-4 col-form-label">{{ 'AddressFields.District' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Ernakulam</option>
+                          <option value="2">Thiruvananthapuram</option>
+                          <option value="3">Kollam</option>
+                          <option value="3">Pathanamthitta</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="sex" class="col-sm-4 col-form-label">{{ 'CRDeath.TownOrVillage' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Grama Panchayat</option>
+                          <option value="2">Corporation</option>
+                          <option value="3">Municipality</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="sex" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfPanchayatOrMunicipalityOrCorporation' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Paigottoor</option>
+                          <option value="2">Varappetty</option>
+                          <option value="3">Ayavana</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.Religion' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Hindu</option>
+                          <option value="2">Muslim</option>
+                          <option value="3">Chrtistian</option>
+                          <option value="3">Jain</option>
+                          <option value="4">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.ReligionOther' | translate }}</label>
+                      <div class="col-sm-8">
+                        <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.ReligionOther' | translate }}" name="religionOther"
+                          [(ngModel)]="religionOther" #pickedName="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.OccupationOfDeceased' | translate }}</label>
+                      <div class="col-sm-8">
+                        <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.OccupationOfDeceased' | translate }}"
+                          name="Occupation" [(ngModel)]="Occupation" #pickedName="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.TypeOfMedicalAttentionReceived' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">{{ 'CRDeath.Institutional' | translate }}</option>
+                          <option value="2">{{ 'CRDeath.MedicalAttentionOther' | translate }}</option>
+                          <option value="3">{{ 'CRDeath.NoMedicalAttention' | translate }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="address-type-informant" class="col-sm-4 col-form-label">{{ 'CRDeath.WasTheCauseOfDeathCertified' | translate }}</label>
+                      <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">{{ 'CRDeath.Yes' | translate }}</label>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">{{ 'CRDeath.No' | translate }}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wraper LogBtns btn-center" align="center">
+                    <button class="btn btn-primary mb-2" (click)="changeComponent(legal1, 2)">
+                      < {{ 'CRDeath.Back' | translate }}</button>
+                        <button class="btn btn-primary mb-2 btn-save">{{ 'Settings.save' | translate }}</button>
+                        <button class="btn btn-primary mb-2" (click)="changeComponent(legal3, 4)">{{ 'CRDeath.Next' | translate }} ></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="tab-content" *ngIf="activeTab == '4'">
+            <div class="container">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="place" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfIllnessOrActualCauseOfDeathMain' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Jaundice</option>
+                          <option value="2">Other internal reasons</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="place" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfIllnessOrActualCauseOfDeathSub' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">Fever</option>
+                          <option value="2">Food infection</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfIllnessOrActualCauseOfDeathOther' | translate }}</label>
+                      <div class="col-sm-8">
+                        <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.NameOfIllnessOrActualCauseOfDeathOther' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.InCaseThisFemaleDeath' | translate }}</label>
+                      <div class="col-sm-8">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <option selected>{{ 'CRDeath.Choose' | translate }}</option>
+                          <option value="1">{{ 'CRDeath.DuringPregnancy' | translate }}</option>
+                          <option value="2">{{ 'CRDeath.TimeOfDelivery' | translate }}</option>
+                          <option value="3">{{ 'CRDeath.WithinSixWeeks' | translate }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="smoking" class="col-sm-4 col-form-label">{{ 'CRDeath.SmokingYears' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
+
+                        <label class="form-check-label" for="defaultCheck1">No</label>
+
+                        <input type="text" style="margin-left: 5px;" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Years' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                        <label class="form-check-label" style="margin-left: 5px;">{{ 'CRDeath.Years' | translate }}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="tobacco" class="col-sm-4 col-form-label">{{ 'CRDeath.ChewingYears' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
+
+                        <label class="form-check-label" for="defaultCheck1">{{ 'CRDeath.No' | translate }}</label>
+
+                        <input type="text" style="margin-left: 5px;" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Years' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                        <label class="form-check-label" style="margin-left: 5px;">{{ 'CRDeath.Years' | translate }}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="arecanut" class="col-sm-4 col-form-label">{{ 'CRDeath.ChewingArecanut' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
+
+                        <label class="form-check-label" for="defaultCheck1">{{ 'CRDeath.No' | translate }}</label>
+
+                        <input type="text" style="margin-left: 5px;" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Years' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                        <label class="form-check-label" style="margin-left: 5px;">{{ 'CRDeath.Years' | translate }}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="arecanut" class="col-sm-4 col-form-label">{{ 'CRDeath.DrinkConsumption' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
+
+                        <label class="form-check-label" for="defaultCheck1">No</label>
+
+                        <input type="text" style="margin-left: 5px;" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Years' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                        <label class="form-check-label" style="margin-left: 5px;">{{ 'CRDeath.Years' | translate }}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wraper LogBtns btn-center" align="center">
+                    <button class="btn btn-primary mb-2" (click)="changeComponent(legal1, 3)">
+                      < {{ 'CRDeath.Back' | translate }}</button>
+                        <button class="btn btn-primary mb-2 btn-save">{{ 'Settings.save' | translate }}</button>
+                        <button class="btn btn-primary mb-2" (click)="changeComponent(legal3, 5)">{{ 'CRDeath.Next' | translate }} ></button>
+                  </div>
+
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <div class="tab-content" *ngIf="activeTab == '5'">
+            <div class="container">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfTheDiseased' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+                        <select class="form-control mr-sm-2" id="salutationSelect">
+                          <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                          <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                        </select>
+                        <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.NameOfTheDiseased' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="religion" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfFatherOrHusband' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+                        <select class="form-control mr-sm-2" id="salutationSelect">
+                          <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                        </select>
+                        <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.NameOfFatherOrHusband' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="nameOfMotherOrWife" class="col-sm-4 col-form-label">{{ 'CRDeath.NameOfMotherOrWife' | translate }}</label>
+                      <div class="col-sm-8 form-inline">
+                        <select class="form-control mr-sm-2" id="salutationSelect">
+                          <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                        </select>
+                        <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.NameOfMotherOrWife' | translate }}"
+                          name="deathOther" [(ngModel)]="deathOther" #pickedName="ngModel">
+                      </div>
+                    </div>
+                  </div>
+                  <!--test-->
+                  <div class="col-md-12 col-lg-12">
+                    <div class="form-group row">
+                      <label class="col-sm-12 col-form-label lablmain">{{ 'CRDeath.PermanentAddressOfTheDiseased' | translate }}</label>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-lg-12">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.CareOf' | translate }}</label>
+                          <div class="col-sm-8 form-inline">
+                            <select class="form-control mr-sm-2" id="salutationSelect">
+                              <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                              <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                            </select>
+                            <input type="text" maxlength="45" id="" class="form-control col-sm-8" placeholder="C/O" name="deathOther" [(ngModel)]="deathOther"
+                              #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.WardNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.WardNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseNumber' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseNumber' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.ResidenceAssocNo' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.ResidenceAssocNo' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.StreetName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.StreetName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PlaceName' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.PlaceName' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Via' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.Via' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Village' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Village' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Taluk' | translate }}</label>
+                          <div class="col-sm-8">
+                            <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Taluk' | translate }}" name="deathOther"
+                              [(ngModel)]="deathOther" #pickedName="ngModel">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Country' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.India' | translate }}</option>
+                              <option>{{ 'CRDeath.OutsideIndia' | translate }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-6">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.State' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>{{ 'CRDeath.Kerala' | translate }}</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.District' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Thiruvananthapuram</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-5">
+                        <div class="form-group row">
+                          <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PostOffice' | translate }}</label>
+                          <div class="col-sm-8">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Kowdiar</option>
+                              <option>Kadavoor</option>
+                              <option>Pothanicad</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 col-lg-2">
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <input id="" class="form-control" value="695003" placeholder="{{ 'AddressFields.PinCode' | translate }}" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group" style="float: right;">
+                      <div class="form-inline">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">IP No</label>
+                          <div class="form-check form-check-inline" style="margin-left:3px;">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">OP No</label>
+                          </div>
+                        </div>
+                        <input type="text" id="ipopno" class="form-control" name="ipopno">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- place of death address-->
+                                    <!--test-->
+                                    <div class="col-md-12 col-lg-12">
+                                      <div class="form-group row">
+                                        <label class="col-sm-12 col-form-label lablmain">{{ 'CRDeath.AddressOfPlaceOfDeath' | translate }}</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-12">
+                                      <div class="row">
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.CareOf' | translate }}</label>
+                                            <div class="col-sm-8 form-inline">
+                                              <select class="form-control mr-sm-2" id="salutationSelect">
+                                                <option value="1">{{ 'CRDeath.Sri' | translate }}</option>
+                                                <option value="2">{{ 'CRDeath.Smt' | translate }}</option>
+                                              </select>
+                                              <input type="text" maxlength="45" id="" class="form-control col-sm-8" placeholder="C/O" name="deathOther" [(ngModel)]="deathOther"
+                                                #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                  
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.WardNo' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.WardNo' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                  
+                  
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseNumber' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseNumber' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                  
+                  
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.HouseName' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.HouseName' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.ResidenceAssocNo' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.ResidenceAssocNo' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.StreetName' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.StreetName' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PlaceName' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.PlaceName' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Via' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'AddressFields.Via' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Village' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Village' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Taluk' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" maxlength="45" id="" class="form-control" placeholder="{{ 'CRDeath.Taluk' | translate }}" name="deathOther"
+                                                [(ngModel)]="deathOther" #pickedName="ngModel">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'CRDeath.Country' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>{{ 'CRDeath.India' | translate }}</option>
+                                                <option>{{ 'CRDeath.OutsideIndia' | translate }}</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.State' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>{{ 'CRDeath.Kerala' | translate }}</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-5">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.District' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>Thiruvananthapuram</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-5">
+                                          <div class="form-group row">
+                                            <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'AddressFields.PostOffice' | translate }}</label>
+                                            <div class="col-sm-8">
+                                              <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>Kowdiar</option>
+                                                <option>Kadavoor</option>
+                                                <option>Pothanicad</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-2">
+                                          <div class="form-group row">
+                                            <div class="col-sm-12">
+                                              <input id="" class="form-control" value="695003" placeholder="{{ 'AddressFields.PinCode' | translate }}" readonly>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <div class="form-group" style="float: right;">
+                                        <div class="form-inline">
+                                          <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="gridRadios1" style="margin-right: 5px;">Inward Number</label> 
+                                            <input class="form-check-input" type="text" name="gridRadios" id="gridRadios1" value="">
+                                              <div class="form-check form-check-inline" style="margin-left:3px;">
+                                                <label class="form-check-label" for="gridRadios2" style="margin-right: 5px;">Year</label>  
+                                                <input class="form-check-input" type="text" name="gridRadios" id="gridRadios2" value="" checked>
+                                              </div>
+                                          </div>
+                                          <!--<input type="text" id="ipopno" class="form-control" name="ipopno">-->
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                  
+
+                  <!-- place of death address-->
+
+
+
+                  <div class="col-md-12">
+                    <label for="birthDoB" class="col-sm-4 col-form-label">{{ 'Grid.Remarks' | translate }}</label>
+                    <textarea class="form-control" placeholder="{{ 'Grid.Remarks' | translate }}" id="perm-Address" rows="3" style="margin-bottom: 3px;"
+                      class="form-control"></textarea>
+                  </div>
+                  <!--<div class="col-md-12">
+                    <div class="form-group" style="float: right;">
+                      <div class="form-inline">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                          <label class="form-check-label" for="gridRadios1">IP No</label>
+                          <div class="form-check form-check-inline" style="margin-left:3px;">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                            <label class="form-check-label" for="gridRadios2">OP No</label>
+                          </div>
+                        </div>
+                        <input type="text" id="ipopno" class="form-control" name="ipopno">
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-sm-8 form-inline">
+
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">{{ 'CRDeath.TranslationOath' | translate }}</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="wraper LogBtns btn-center" align="center">
+                    <button class="btn btn-primary mb-2" (click)="changeComponent(legal1, 4)">
+                      < {{ 'CRDeath.Back' | translate }}</button>
+                        <button class="btn btn-primary mb-2 btn-save">{{ 'Settings.save' | translate }}</button>
+                        <!--<button class="btn btn-primary mb-2" (click)="changeComponent(legal3, 3)">Next ></button> -->
+                  </div>
+                </div>
+              </form>
+              <!--<div class="row"> -->
+
+
+              <!--test-->
+
+
+              <!--</div> -->
+
+              <!--</form> -->
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
